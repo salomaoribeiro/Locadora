@@ -1,0 +1,56 @@
+﻿@model Locadora.ViewModel.FilmeNovoViewModel
+
+<h1> Novo Filme </h1>
+@using (Html.BeginForm("CriarFilme", "Filmes"))
+{
+  @Html.AntiForgeryToken();
+
+  <div class="form-control">
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        @Html.LabelFor(filmeViewModel => filmeViewModel.Filme.Nome, new { @class = "form-label" })
+        @Html.TextBoxFor(filmeViewModel => filmeViewModel.Filme.Nome, new { @class ="form-control" })
+        @Html.ValidationMessageFor(filmeViewModel => filmeViewModel.Filme.Nome, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        @Html.LabelFor(filmeViewModel => filmeViewModel.Filme.GenerosId, new { @class = "form-label" })
+        @Html.DropDownListFor(filmeViewModel => filmeViewModel.Filme.GenerosId, new SelectList(Model.Generos, "Id", "Name"),
+                                "-- Selecione o gênero --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(filmeViewModel => filmeViewModel.Filme.GenerosId, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        @Html.LabelFor(filmeViewModel => filmeViewModel.Filme.DataLancamento, new { @class = "form-label" })
+        @Html.TextBoxFor(filmeViewModel => filmeViewModel.Filme.DataLancamento, "{0: dd/MM/yyyy}", new {@class = "form-control" })
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        @Html.LabelFor(filmeViewModel => filmeViewModel.Filme.DataDaCompra, new { @class = "form-label" })
+        @Html.TextBoxFor(filmeViewModel => filmeViewModel.Filme.DataDaCompra, "{0: dd/MM/yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(filmeViewModel => filmeViewModel.Filme.DataDaCompra, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        @Html.LabelFor(filmeViewModel => filmeViewModel.Filme.Estoque, new { @class = "form-label" })
+        @Html.TextBoxFor(filmeViewModel => filmeViewModel.Filme.Estoque, new { @class = "form-control" })
+        @Html.ValidationMessageFor(filmeViewModel => filmeViewModel.Filme.Estoque, "", new { @class = "text-danger"} )
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary btn-lg">Salvar filme</button>
+      </div>
+    </div>
+  </div>
+}

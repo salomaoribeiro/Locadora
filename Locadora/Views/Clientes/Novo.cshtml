@@ -1,0 +1,57 @@
+﻿@model Locadora.ViewModel.ClienteNovoViewModel
+
+<h1>Novo Cliente</h1>
+
+@using (@Html.BeginForm("CriarUsuario", "Clientes"))
+{
+  @Html.AntiForgeryToken()
+  ;
+  @Html.ValidationSummary()
+  ;
+
+  <div class="form-control">
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        @Html.LabelFor(cliente => cliente.Cliente.Nome, new {@class = "form-label"})
+        @Html.TextBoxFor(cliente => cliente.Cliente.Nome, new {@class = "form-control"})
+        @Html.ValidationMessageFor(cliente => cliente.Cliente.Nome, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+
+      <div class="mb-3">
+        @Html.LabelFor(cliente => cliente.Cliente.DataNascimento, new { @class = "form-label"})
+        @Html.TextBoxFor(cliente => cliente.Cliente.DataNascimento, new { @class = "form-control"})
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        @Html.LabelFor(cliente => cliente.Cliente.AssinaturasId, new { @class ="form-label"})?
+        @Html.DropDownListFor(cliente => cliente.Cliente.AssinaturasId, new SelectList(Model.Assinaturas, "Id", "Nome"),
+      "Selecione o tipo de assinatura", new {@class = "form-select form-control"})
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+      <div class="mb-3 form-check">
+        @Html.CheckBoxFor(cliente => cliente.Cliente.EhSubscritoNewsLetter, new { @class = "form-check-input"})
+        @Html.LabelFor(cliente => cliente.Cliente.EhSubscritoNewsLetter, new { @class ="form-check-label"})?
+      </div>
+    </div>
+
+    <div class="form-control-lg">
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary btn-lg">Criar usuário</button>
+      </div>
+    </div>
+
+  </div>
+}
+
+@section script
+  {
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  }

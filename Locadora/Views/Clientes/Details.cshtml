@@ -1,0 +1,10 @@
+﻿@model Locadora.Models.Clientes
+
+<h1>@Model.Nome</h1>
+<ul>
+  <li>Tipo de Assinatura: @Model.Assinaturas.Nome</li>
+  @if (Model.DataNascimento != null)
+  {
+    <li> Data de Nascimento: @Model.DataNascimento </li>
+  }
+</ul>

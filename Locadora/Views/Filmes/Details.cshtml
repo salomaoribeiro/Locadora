@@ -1,0 +1,11 @@
+﻿@model Locadora.Models.Filmes
+
+
+<h1>@Model.Nome</h1>
+
+<ul>
+  <li>Gênero: @Model.Generos.Name</li>
+  <li>Data de Lançamento: @Model.DataLancamento.ToLongDateString()</li>
+  <li>Data de Aquisiçao: @Model.DataDaCompra.ToLongDateString()</li>
+  <li>Estoque: @Model.Estoque unidades</li>
+</ul>
